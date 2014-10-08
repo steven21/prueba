@@ -1,0 +1,31 @@
+/**
+ * jQuery like library
+ * @author Daniel Fernandez
+ */
+
+var sQuery = function (param) {
+    // If param is a string of type <tag>, create an element of type 'tag'
+    // And store it as element property of the dQuery object
+    var tag = param.replace(/<|>/g, '');     
+    this.el = document.createElement(tag);    
+};
+
+// $().html() implementation
+sQuery.prototype.html = function (html) {
+    this.el.innerHTML = html;
+    return this; // Return the sQuery instance to allow chaining
+};
+
+// Override sQuery object toString method, to return the element HTML
+sQuery.prototype.toString = function () {
+    return this.el.outerHTML;
+};
+
+// Expose the $ function: $()
+var $ = function (param) {
+    return new dQuery(param);
+};
+
+// Note that the dQuery 'toString' method is being called because the 'html' method return
+// the sQuery instance.
+document.getElementById('container').innerHTML = $('<p>').html('Hola'); 
