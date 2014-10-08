@@ -1,6 +1,7 @@
 /**
  * jQuery like library
  * @author Daniel Fernandez
+ * @author Steven Cruz
  */
 
 var sQuery = function (param) {
